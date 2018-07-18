@@ -11,7 +11,7 @@ public class AplikasiWebNoFramework {
         p.setKode("P-001");
         p.setNama("Perusahaan 001");
         
-        String url = "jdbc:mysql://localhost/trainingjee201801";
+        String url = "jdbc:mysql://localhost/trainingjee201801?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
         String username = "trainingjee201801";
         String password = "test123";
         
@@ -19,5 +19,7 @@ public class AplikasiWebNoFramework {
         
         PerusahaanDao pd = new PerusahaanDao(conn);
         pd.simpan(p);
+        
+        conn.close();
     }
 }
