@@ -9,21 +9,22 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.hibernate.annotations.GenericGenerator;
+import org.eclipse.persistence.annotations.UuidGenerator;
 
-@Entity 
+@Entity @Table(name = "provinsi")
+@UuidGenerator(name="PROVINSI_ID_GEN")
 @Getter @Setter @EqualsAndHashCode(of = {"id"}) @ToString
 public class Provinsi implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(generator = "uui")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    @GeneratedValue(generator = "PROVINSI_ID_GEN")
     private String id;
     
     @NotNull

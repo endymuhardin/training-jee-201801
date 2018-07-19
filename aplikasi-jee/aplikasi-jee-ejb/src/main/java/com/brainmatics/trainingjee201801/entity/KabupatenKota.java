@@ -6,22 +6,23 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.hibernate.annotations.GenericGenerator;
+import org.eclipse.persistence.annotations.UuidGenerator;
 
-@Entity
+@Entity @Table(name = "kabupaten_kota")
 @Getter @Setter @EqualsAndHashCode(of = {"id"}) @ToString
+@UuidGenerator(name="KAB_ID_GEN")
 public class KabupatenKota implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(generator = "uui")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    @GeneratedValue(generator = "KAB_ID_GEN")
     private String id;
 
     @NotNull @Size(min = 3)

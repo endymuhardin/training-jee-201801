@@ -17,14 +17,14 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.hibernate.annotations.GenericGenerator;
+import org.eclipse.persistence.annotations.UuidGenerator;
 
 @Entity @Table(name = "t_user", indexes = @Index(columnList = "email"))
+@UuidGenerator(name="USER_ID_GEN")
 @Getter @Setter @EqualsAndHashCode(of = {"id"}) @ToString
 public class User {
     @Id
-    @GeneratedValue(generator = "uui")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    @GeneratedValue(generator = "USER_ID_GEN")
     private String id;
     
     @NotNull
