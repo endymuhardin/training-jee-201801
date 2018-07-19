@@ -16,11 +16,17 @@ public class PendaftaranSessionBean {
     private static final String JPQL_CARI_PERUSAHAAN_BY_KODE = "select p from Perusahaan p where p.kode = :kode";
     private static final String JPQL_SEMUA_USER = "select u from User order by u.nama";
     private static final String JPQL_SEMUA_PROVINSI = "select u from Provinsi order by u.nama";
+    private static final String JPQL_SEMUA_PERUSAHAAN = "select u from Perusahaan order by u.nama";
 
     @PersistenceContext private EntityManager entityManager;
     
     public List<Provinsi> semuaProvinsi(){
         return entityManager.createQuery(JPQL_SEMUA_PROVINSI)
+                .getResultList();
+    }
+    
+    public List<Perusahaan> semuaPerusahaan(){
+        return entityManager.createQuery(JPQL_SEMUA_PERUSAHAAN)
                 .getResultList();
     }
     
