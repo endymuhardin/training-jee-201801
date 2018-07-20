@@ -18,7 +18,6 @@ public class HelloWorld extends ActionSupport {
     
     private String message;
 
-    @Transactional
     public String execute() {
         // insert data
         
