@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateKabupatenKotaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateKabupatenKotaLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{kabupatenKotaController.selected.id}" title="#{bundle.CreateKabupatenKotaTitle_id}" />
+                    <h:outputLabel value="#{bundle.CreateKabupatenKotaLabel_kode}" for="kode" />
+                    <h:inputText id="kode" value="#{kabupatenKotaController.selected.kode}" title="#{bundle.CreateKabupatenKotaTitle_kode}" />
+                    <h:outputLabel value="#{bundle.CreateKabupatenKotaLabel_nama}" for="nama" />
+                    <h:inputText id="nama" value="#{kabupatenKotaController.selected.nama}" title="#{bundle.CreateKabupatenKotaTitle_nama}" />
+                    <h:outputLabel value="#{bundle.CreateKabupatenKotaLabel_provinsi}" for="provinsi" />
+                    <h:selectOneMenu id="provinsi" value="#{kabupatenKotaController.selected.provinsi}" title="#{bundle.CreateKabupatenKotaTitle_provinsi}" >
+                        <f:selectItems value="#{provinsiController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{kabupatenKotaController.create}" value="#{bundle.CreateKabupatenKotaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{kabupatenKotaController.prepareList}" value="#{bundle.CreateKabupatenKotaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateKabupatenKotaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

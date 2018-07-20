@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewProvinsiTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewProvinsiLabel_id}"/>
+                    <h:outputText value="#{provinsiController.selected.id}" title="#{bundle.ViewProvinsiTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewProvinsiLabel_kode}"/>
+                    <h:outputText value="#{provinsiController.selected.kode}" title="#{bundle.ViewProvinsiTitle_kode}"/>
+                    <h:outputText value="#{bundle.ViewProvinsiLabel_nama}"/>
+                    <h:outputText value="#{provinsiController.selected.nama}" title="#{bundle.ViewProvinsiTitle_nama}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{provinsiController.destroyAndView}" value="#{bundle.ViewProvinsiDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewProvinsiEditLink}"/>
+                <br />
+                <h:commandLink action="#{provinsiController.prepareCreate}" value="#{bundle.ViewProvinsiCreateLink}" />
+                <br />
+                <h:commandLink action="#{provinsiController.prepareList}" value="#{bundle.ViewProvinsiShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewProvinsiIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

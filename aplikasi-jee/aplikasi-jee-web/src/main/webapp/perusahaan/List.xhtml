@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListPerusahaanTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListPerusahaanEmpty}" rendered="#{perusahaanController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{perusahaanController.items.rowCount > 0}">
+                    <h:outputText value="#{perusahaanController.pagination.pageFirstItem + 1}..#{perusahaanController.pagination.pageLastItem + 1}/#{perusahaanController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{perusahaanController.previous}" value="#{bundle.Previous} #{perusahaanController.pagination.pageSize}" rendered="#{perusahaanController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{perusahaanController.next}" value="#{bundle.Next} #{perusahaanController.pagination.pageSize}" rendered="#{perusahaanController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{perusahaanController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPerusahaanTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPerusahaanTitle_kode}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.kode}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPerusahaanTitle_nama}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nama}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{perusahaanController.prepareView}" value="#{bundle.ListPerusahaanViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{perusahaanController.prepareEdit}" value="#{bundle.ListPerusahaanEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{perusahaanController.destroy}" value="#{bundle.ListPerusahaanDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{perusahaanController.prepareCreate}" value="#{bundle.ListPerusahaanCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListPerusahaanIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateUserTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateUserLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{userController.selected.id}" title="#{bundle.CreateUserTitle_id}" />
+                    <h:outputLabel value="#{bundle.CreateUserLabel_nama}" for="nama" />
+                    <h:inputText id="nama" value="#{userController.selected.nama}" title="#{bundle.CreateUserTitle_nama}" />
+                    <h:outputLabel value="#{bundle.CreateUserLabel_email}" for="email" />
+                    <h:inputText id="email" value="#{userController.selected.email}" title="#{bundle.CreateUserTitle_email}" />
+                    <h:outputLabel value="#{bundle.CreateUserLabel_noHp}" for="noHp" />
+                    <h:inputText id="noHp" value="#{userController.selected.noHp}" title="#{bundle.CreateUserTitle_noHp}" />
+                    <h:outputLabel value="#{bundle.CreateUserLabel_alamat}" for="alamat" />
+                    <h:inputText id="alamat" value="#{userController.selected.alamat}" title="#{bundle.CreateUserTitle_alamat}" />
+                    <h:outputLabel value="#{bundle.CreateUserLabel_kabupatenKota}" for="kabupatenKota" />
+                    <h:selectOneMenu id="kabupatenKota" value="#{userController.selected.kabupatenKota}" title="#{bundle.CreateUserTitle_kabupatenKota}" >
+                        <f:selectItems value="#{kabupatenKotaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{userController.create}" value="#{bundle.CreateUserSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{userController.prepareList}" value="#{bundle.CreateUserShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateUserIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditPerusahaanTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditPerusahaanLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{perusahaanController.selected.id}" title="#{bundle.EditPerusahaanTitle_id}" />
+                    <h:outputLabel value="#{bundle.EditPerusahaanLabel_kode}" for="kode" />
+                    <h:inputText id="kode" value="#{perusahaanController.selected.kode}" title="#{bundle.EditPerusahaanTitle_kode}" />
+                    <h:outputLabel value="#{bundle.EditPerusahaanLabel_nama}" for="nama" />
+                    <h:inputText id="nama" value="#{perusahaanController.selected.nama}" title="#{bundle.EditPerusahaanTitle_nama}" />
+                </h:panelGrid>
+                <h:commandLink action="#{perusahaanController.update}" value="#{bundle.EditPerusahaanSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditPerusahaanViewLink}"/>
+                <br />
+                <h:commandLink action="#{perusahaanController.prepareList}" value="#{bundle.EditPerusahaanShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditPerusahaanIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
