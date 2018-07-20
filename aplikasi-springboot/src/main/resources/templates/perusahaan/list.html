@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+    <head>
+        <title>Daftar Perusahaan</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <section layout:fragment="content">
+            <h1 class="h2">Daftar Perusahaan</h1>
+
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Kode</th>
+                        <th scope="col">Nama</th>
+                        <th scope="col">&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="p, rowStat : ${dataPerusahaan.content}">
+                        <th scope="row">1</th>
+                        <td th:text="${p.kode}">kode</td>
+                        <td th:text="${p.nama}">nama</td>
+                        <td>
+                            <a th:href="@{/perusahaan/form(id=${p.id})}" class="btn btn-xs">edit</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </body>
+</html>
